@@ -3,6 +3,7 @@ import { edgesDetector } from './edges';
 import { saliencyDetector } from './saliency';
 import { faceDetector } from './face';
 import { documentDetector } from './document';
+import { documentQuadDetector } from './documentQuad';
 
 const registry = new Map<string, Detector>();
 
@@ -17,6 +18,6 @@ export function getDetector(key: string): Detector | undefined {
 let builtInRegistered = false;
 export function registerBuiltInDetectors() {
   if (builtInRegistered) return;
-  [edgesDetector, saliencyDetector, faceDetector, documentDetector].forEach(registerDetector);
+  [documentQuadDetector, documentDetector, faceDetector, saliencyDetector, edgesDetector].forEach(registerDetector);
   builtInRegistered = true;
 }

@@ -35,7 +35,7 @@ export async function createImageCropper(options: CropperOptions = {}): Promise<
     videoEl = null,
     constraints = { video: { facingMode: 'user', width: 1280, height: 720 } },
     aspectRatio = 1,
-    detectors = ['document', 'face', 'saliency', 'edges'],
+    detectors = ['document-quad', 'document', 'face', 'saliency', 'edges'],
     output = { type: 'blob', mime: 'image/jpeg', quality: 0.9 },
     maxWidth,
   } = options;
@@ -70,4 +70,11 @@ export async function createImageCropper(options: CropperOptions = {}): Promise<
   }
 
   return { captureAndCrop, destroy };
+}
+
+export async function createDocumentCamera(options: Omit<CropperOptions, 'detectors'> = {}): Promise<ImageCropper> {
+  return createImageCropper({
+    detectors: ['document-quad', 'document', 'face', 'saliency', 'edges'],
+    ...options,
+  });
 }

@@ -1,1 +1,1 @@
-export * from './public';
+export { createDocumentCamera } from './public';
