@@ -1,4 +1,4 @@
-# @james/image-cropper
+# @ekimmayong/image-cropper
 
 Auto-camera capture and smart cropping library.
 
@@ -20,17 +20,17 @@ A lightweight TypeScript library that opens the user camera, grabs a frame, dete
 ## Installation
 
 ```bash
-npm install @james/image-cropper
+npm install @ekimmayong/image-cropper
 # or
-pnpm add @james/image-cropper
+pnpm add @ekimmayong/image-cropper
 # or
-yarn add @james/image-cropper
+yarn add @ekimmayong/image-cropper
 ```
 
 ## Quick Start
 
 ```ts
-import { createImageCropper } from "@james/image-cropper";
+import { createImageCropper } from "@ekimmayong/image-cropper";
 
 const cropper = await createImageCropper({ aspectRatio: 1 });
 const { blob, rect } = await cropper.captureAndCrop();
@@ -44,7 +44,7 @@ console.log(rect, blob);
 <button id="capture">Capture</button>
 <div id="output"></div>
 <script type="module">
-  import { createImageCropper } from "https://cdn.skypack.dev/@james/image-cropper";
+  import { createImageCropper } from "https://cdn.skypack.dev/@ekimmayong/image-cropper";
   const cropper = await createImageCropper({
     videoEl: document.getElementById("cam"),
     aspectRatio: { width: 1, height: 1 },
@@ -111,7 +111,7 @@ You can change order to prioritize: `detectors: ['saliency','face','edges']`.
 Custom detector registration (planned):
 
 ```ts
-import { registerDetector } from "@james/image-cropper/dist/detectors/register";
+import { registerDetector } from "@ekimmayong/image-cropper/dist/detectors/register";
 registerDetector({
   key: "myDetector",
   supports: () => true,
