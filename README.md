@@ -104,6 +104,7 @@ Current built-ins (simple placeholders for now):
 - `face` – Uses experimental `FaceDetector` API if available.
 - `saliency` – Center-weight placeholder rectangle (to be replaced with real saliency model / worker).
 - `edges` – Naive edge-density fallback (currently margin crop placeholder).
+- `document` – Experimental coarse contrast-based rectangle estimation (placeholder for robust doc detection).
 
 You can change order to prioritize: `detectors: ['saliency','face','edges']`.
 
