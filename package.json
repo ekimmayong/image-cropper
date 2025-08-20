@@ -21,6 +21,7 @@
       "require": "./dist/index.cjs"
     },
     "./react-native": {
+      "react-native": "./dist/react-native.js",
       "import": "./dist/react-native.mjs",
       "require": "./dist/react-native.cjs"
     }
