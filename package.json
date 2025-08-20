@@ -19,6 +19,10 @@
     ".": {
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
+    },
+    "./react-native": {
+      "import": "./dist/react-native.mjs",
+      "require": "./dist/react-native.cjs"
     }
   },
   "sideEffects": false,
@@ -50,5 +54,9 @@
     "size-limit": "^11.0.0",
     "@size-limit/file": "^11.0.0",
     "@types/node": "^20.11.0"
-  }
+  },
+  "files": [
+    "dist",
+    "src"
+  ]
 }

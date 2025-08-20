@@ -163,7 +163,8 @@ await cropper.captureAndCrop({ aspectRatio: [1, 4 / 5, 16 / 9] });
 - Real saliency (worker) implementation
 - Composition scoring (rule-of-thirds weighting) – currently placeholder
 - Debug overlay layer
-- Document edge/perspective detection
+- Document edge/perspective detection (phase 1: quad detect, phase 2: perspective crop)
+- Expanded automated tests (detectors, pipeline performance)
 
 ## Development
 
@@ -189,3 +190,35 @@ MIT
 ## Contributing
 
 PRs welcome once core stabilizes. Open an issue to discuss new detector ideas.
+
+## React Native / Expo
+Currently a placeholder adapter is exported at `@ekimmayong/image-cropper/react-native` which throws a not implemented error. Planned steps:
+1. Add native frame provider (expo-camera / vision-camera).
+2. Provide buffer->GenericFrame conversion.
+3. Implement pure JS detectors without Canvas reliance.
+4. Supply output helpers using expo-image-manipulator.
+
+Import placeholder:
+```ts
+import { createImageCropper } from '@ekimmayong/image-cropper/react-native';
+// Throws until implemented.
+```
+
+```ts
+// Example (React Native / Expo) pseudo-usage:
+import { createImageCropper } from '@ekimmayong/image-cropper/react-native';
+import { decodeJpegToRgba } from './your-decode-util';
+
+const frameProvider = {
+  async capture() {
+    // get base64 jpeg from expo-camera / vision-camera
+    const base64 = await takePictureBase64();
+    const { width, height, data } = decodeJpegToRgba(base64); // returns Uint8ClampedArray RGBA
+    return { width, height, data };
+  },
+  destroy() {}
+};
+
+const cropper = await createImageCropper({ frameProvider, aspectRatio: [1, 4/5] });
+const { rect, data } = await cropper.captureAndCrop();
+```

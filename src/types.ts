@@ -11,3 +11,6 @@ export interface FrameData {
   ctx: CanvasRenderingContext2D;
   imageData: ImageData;
 }
+
+export interface GenericFrame { width: number; height: number; data: Uint8ClampedArray; }
+export interface FrameProvider { capture(): Promise<GenericFrame> | GenericFrame; destroy(): void; }

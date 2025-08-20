@@ -52,12 +52,17 @@ export const documentDetector: Detector = {
     maxY = Math.min(height, maxY + padY);
     const w = Math.max(1, maxX - minX);
     const h = Math.max(1, maxY - minY);
-
+    const corners = [
+      { x: minX, y: minY },
+      { x: minX + w, y: minY },
+      { x: minX + w, y: minY + h },
+      { x: minX, y: minY + h }
+    ];
     // Score: coverage * edge density factor
     const coverage = (w * h) / (width * height);
     const edgeDensity = hits / ((width / stepX) * (height / stepY));
     const score = Math.min(0.85, 0.3 + coverage * 0.3 + edgeDensity * 0.4);
 
-    return { rects: [{ rect: { x: minX, y: minY, width: w, height: h }, score }] };
+    return { rects: [{ rect: { x: minX, y: minY, width: w, height: h }, score }], meta: { corners } };
   }
 };
