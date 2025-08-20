@@ -1,4 +1,4 @@
-# @ekimmayong/image-cropper
+# smart-image-crop
 
 Auto-camera capture and smart cropping library.
 
@@ -20,17 +20,16 @@ A lightweight TypeScript library that opens the user camera, grabs a frame, dete
 ## Installation
 
 ```bash
-npm install @ekimmayong/image-cropper
+npm install smart-image-crop
 # or
-pnpm add @ekimmayong/image-cropper
-# or
-yarn add @ekimmayong/image-cropper
+pnpm add smart-image-crop
+yarn add smart-image-crop
 ```
 
 ## Quick Start
 
 ```ts
-import { createImageCropper } from "@ekimmayong/image-cropper";
+import { createImageCropper } from "smart-image-crop";
 
 const cropper = await createImageCropper({ aspectRatio: 1 });
 const { blob, rect } = await cropper.captureAndCrop();
@@ -44,7 +43,7 @@ console.log(rect, blob);
 <button id="capture">Capture</button>
 <div id="output"></div>
 <script type="module">
-  import { createImageCropper } from "https://cdn.skypack.dev/@ekimmayong/image-cropper";
+  import { createImageCropper } from "https://cdn.skypack.dev/smart-image-crop";
   const cropper = await createImageCropper({
     videoEl: document.getElementById("cam"),
     aspectRatio: { width: 1, height: 1 },
@@ -111,7 +110,7 @@ You can change order to prioritize: `detectors: ['saliency','face','edges']`.
 Custom detector registration (planned):
 
 ```ts
-import { registerDetector } from "@ekimmayong/image-cropper/dist/detectors/register";
+import { registerDetector } from "smart-image-crop/dist/detectors/register";
 registerDetector({
   key: "myDetector",
   supports: () => true,
@@ -193,28 +192,26 @@ PRs welcome once core stabilizes. Open an issue to discuss new detector ideas.
 
 ## React Native / Expo
 
-Currently a placeholder adapter is exported at `@ekimmayong/image-cropper/react-native` which throws a not implemented error. Planned steps:
+Currently an early adapter is exported at `smart-image-crop/react-native` (still evolving). Planned steps:
 
-1. Add native frame provider (expo-camera / vision-camera).
+1. Add native frame provider integrations (expo-camera / vision-camera).
 2. Provide buffer->GenericFrame conversion.
 3. Implement pure JS detectors without Canvas reliance.
 4. Supply output helpers using expo-image-manipulator.
 
-Import placeholder:
+Import:
 
 ```ts
-import { createImageCropper } from "@ekimmayong/image-cropper/react-native";
-// Throws until implemented.
+import { createImageCropper } from "smart-image-crop/react-native";
 ```
 
 ```ts
 // Example (React Native / Expo) pseudo-usage:
-import { createImageCropper } from "@ekimmayong/image-cropper/react-native";
+import { createImageCropper } from "smart-image-crop/react-native";
 import { decodeJpegToRgba } from "./your-decode-util";
 
 const frameProvider = {
   async capture() {
-    // get base64 jpeg from expo-camera / vision-camera
     const base64 = await takePictureBase64();
     const { width, height, data } = decodeJpegToRgba(base64); // returns Uint8ClampedArray RGBA
     return { width, height, data };
