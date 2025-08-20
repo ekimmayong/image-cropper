@@ -1,6 +1,6 @@
 {
   "name": "smart-image-crop",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Lightweight JS/TS library to capture camera frame and auto-crop salient subject.",
   "keywords": [
     "image",
