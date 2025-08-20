@@ -1,0 +1,19 @@
+{
+  "root": true,
+  "env": { "browser": true, "es2021": true },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": { "project": ["./tsconfig.json"] },
+  "plugins": ["@typescript-eslint"],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0
+  },
+  "overrides": [
+    {
+      "files": ["vitest.config.ts", "tsup.config.ts"],
+      "env": { "node": true },
+      "parserOptions": { "project": null }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+node_modules/
+dist/
+
+# Build artifacts
+*.tsbuildinfo
+coverage/
+.nyc_output/
+size-limit.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env files
+.env
+.env.*.local
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Cache
+.cache/
+.tmp/
+.temp/
+
+# Output
+*.log
+
+# Misc
+*.swp

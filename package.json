@@ -1,0 +1,54 @@
+{
+  "name": "@james/image-cropper",
+  "version": "0.1.0",
+  "description": "Lightweight JS/TS library to capture camera frame and auto-crop salient subject.",
+  "keywords": [
+    "image",
+    "crop",
+    "camera",
+    "autocrop",
+    "face",
+    "saliency",
+    "thumbnail"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "sideEffects": false,
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
+    "test": "vitest run",
+    "test:watch": "vitest --watch",
+    "size": "size-limit",
+    "prepare": "npm run build"
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.mjs",
+      "limit": "30 KB"
+    }
+  ],
+  "peerDependencies": {},
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "tsup": "^8.0.0",
+    "vitest": "^1.5.0",
+    "jsdom": "^24.0.0",
+    "eslint": "^8.57.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "prettier": "^3.2.0",
+    "size-limit": "^11.0.0",
+    "@size-limit/file": "^11.0.0",
+    "@types/node": "^20.11.0"
+  }
+}
