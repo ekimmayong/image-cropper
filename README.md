@@ -192,22 +192,25 @@ MIT
 PRs welcome once core stabilizes. Open an issue to discuss new detector ideas.
 
 ## React Native / Expo
+
 Currently a placeholder adapter is exported at `@ekimmayong/image-cropper/react-native` which throws a not implemented error. Planned steps:
+
 1. Add native frame provider (expo-camera / vision-camera).
 2. Provide buffer->GenericFrame conversion.
 3. Implement pure JS detectors without Canvas reliance.
 4. Supply output helpers using expo-image-manipulator.
 
 Import placeholder:
+
 ```ts
-import { createImageCropper } from '@ekimmayong/image-cropper/react-native';
+import { createImageCropper } from "@ekimmayong/image-cropper/react-native";
 // Throws until implemented.
 ```
 
 ```ts
 // Example (React Native / Expo) pseudo-usage:
-import { createImageCropper } from '@ekimmayong/image-cropper/react-native';
-import { decodeJpegToRgba } from './your-decode-util';
+import { createImageCropper } from "@ekimmayong/image-cropper/react-native";
+import { decodeJpegToRgba } from "./your-decode-util";
 
 const frameProvider = {
   async capture() {
@@ -216,9 +219,12 @@ const frameProvider = {
     const { width, height, data } = decodeJpegToRgba(base64); // returns Uint8ClampedArray RGBA
     return { width, height, data };
   },
-  destroy() {}
+  destroy() {},
 };
 
-const cropper = await createImageCropper({ frameProvider, aspectRatio: [1, 4/5] });
+const cropper = await createImageCropper({
+  frameProvider,
+  aspectRatio: [1, 4 / 5],
+});
 const { rect, data } = await cropper.captureAndCrop();
 ```
