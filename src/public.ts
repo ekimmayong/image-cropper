@@ -35,7 +35,7 @@ export async function createImageCropper(options: CropperOptions = {}): Promise<
     videoEl = null,
     constraints = { video: { facingMode: 'user', width: 1280, height: 720 } },
     aspectRatio = 1,
-    detectors = ['face', 'saliency', 'edges'],
+    detectors = ['document', 'face', 'saliency', 'edges'],
     output = { type: 'blob', mime: 'image/jpeg', quality: 0.9 },
     maxWidth,
   } = options;
