@@ -1,6 +1,6 @@
 {
   "name": "@ekimmayong/image-cropper",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Lightweight JS/TS library to capture camera frame and auto-crop salient subject.",
   "keywords": [
     "image",
